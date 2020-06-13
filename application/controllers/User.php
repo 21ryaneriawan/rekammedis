@@ -126,8 +126,7 @@ class User extends CI_Controller
             // 'dokter' => $this->Moduser->get_dokter()
         );
 
-        // var_dump($data['get_id']);
-        // die();
+
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_user', $data);
