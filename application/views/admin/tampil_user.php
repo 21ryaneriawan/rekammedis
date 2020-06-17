@@ -74,10 +74,10 @@
                             <div class="box-header">
                                 <!-- /.box-header -->
                                 <div class="box-body">
-                                    <table id="example1" class="table table-bordered table-striped">
+                                    <table id="example1" class="table table-bordered table-striped" width='100%'>
                                         <thead>
                                             <tr>
-                                                <td>No</td>
+                                                <td width=1px>No</td>
                                                 <td width=80px>Nama</td>
                                                 <td width=50px>Email</td>
                                                 <td width=5px>Password</td>

@@ -26,7 +26,21 @@
   <![endif]-->
 
   <!-- Google Font -->
-  <link rel="stylesheet" href="<?= base_url('assets/'); ?>https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
+<style>
+  body {
+    background-image: url("<?= base_url('assets/'); ?>dist/img/photo2.png");
 
-<body class="hold-transition login-page">
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+</style>
+
+<body>
+  <div>
