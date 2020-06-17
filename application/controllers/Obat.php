@@ -368,7 +368,7 @@ class Obat extends CI_Controller
     {
         $nama['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data = array(
-            'title' => 'Ambil Obat',
+            'title' => 'Catatan',
             'name' =>  $nama['user']['name'],
             'email' =>  $nama['user']['email'],
             'date' => $nama['user']['date_created'],
