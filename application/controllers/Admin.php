@@ -41,6 +41,7 @@ class Admin extends CI_Controller
             'jml_user' => $this->Modadmin->jml_user(),
             'jml_pasien' => $this->Modadmin->jml_pasien(),
             'jml_obat' => $this->Modadmin->jml_obat(),
+            'jml_dokter' => $this->Modadmin->jml_dokter(),
             // 'datagrafik' => $this->Modadmin->get_grafik(),
             'datagrafik' => $datamasuk,
             'datagrafik2' => $datamasuk2,

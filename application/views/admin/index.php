@@ -100,14 +100,14 @@
             <!-- small box -->
             <div class="small-box bg-yellow">
                 <div class="inner">
-                    <h3>1</h3>
+                    <h3><?= $jml_dokter; ?></h3>
 
                     <p>Jumlah Dokter</p>
                 </div>
                 <div class="icon">
                     <i class="fa fa-user-md"></i>
                 </div>
-                <a href="#" class="small-box-footer">
+                <a href="<?= base_url('dokter') ?>" class="small-box-footer">
                     More info <i class="fa fa-arrow-circle-right"></i>
                 </a>
             </div>

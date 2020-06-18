@@ -100,6 +100,16 @@ class Modadmin extends CI_Model
         }
     }
 
+    public function jml_dokter()
+    {
+        $query = $this->db->get('data_dokter');
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        } else {
+            return 0;
+        }
+    }
+
     //GRAFIK PASIEN
     // function get_grafik()
     // {
@@ -187,7 +197,7 @@ class Modadmin extends CI_Model
     {
         $data =  $this->db->query("SELECT * FROM 
         (
-         SELECT COUNT(*) total FROM rekam_medis WHERE (EXTRACT(YEAR_MONTH FROM tanggal)=CONCAT(YEAR (CURRENT_DATE()),'06'))AND status='selesai' 
+        SELECT COUNT(*) total FROM rekam_medis WHERE (EXTRACT(YEAR_MONTH FROM tanggal)=CONCAT(YEAR (CURRENT_DATE()),'06'))AND status='selesai' 
         )a");
 
         $row = $data->row();
