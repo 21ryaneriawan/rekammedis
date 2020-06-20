@@ -69,7 +69,7 @@
                     <div class="col-xs-12">
                         <div class="box">
                             <div class="box-body">
-                                <table id="example" class="table table-bordered table-striped">
+                                <table id="example" class="table table-bordered table-striped" width='100%'>
                                     <thead>
                                         <tr>
                                             <th width="1%">No</th>

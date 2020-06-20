@@ -11,6 +11,17 @@ class Moddokter extends CI_Model
             ORDER BY id DESC");
         return $data->result_array();
     }
+
+    function get_catatan()
+    {
+        $data = $this->db->query("
+            SELECT COUNT(*) as total
+            FROM data_report
+            WHERE status='read'");
+
+        return $data->row()->total;
+    }
+
     function edit_dokter($id)
     {
         $data = $this->db->query("

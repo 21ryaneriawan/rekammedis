@@ -82,6 +82,7 @@
                                                 <th width="5%">Nama Pasien</th>
                                                 <th width="10%">Diagnosa</th>
                                                 <th width="1%">Catatan</th>
+                                                <th width="1%">Action</th>
                                                 <!-- <td>Obat</td> -->
                                             </tr>
                                         </thead>
@@ -95,6 +96,9 @@
                                                     <td><?= $i['diagnosa'] ?></td>
                                                     <td>
                                                         <a href="<?= base_url('medis/catatan') ?>?id=<?= $i['id'] ?>">Lihat Catatan</a>
+                                                    </td>
+                                                    <td>
+                                                        <button class='glyphicon glyphicon-trash btn btn-danger' onclick='return hapus(<?= $i['id'] ?>)'></button></a>
                                                     </td>
                                                 </tr>
                                             <?php $no++;
@@ -192,5 +196,15 @@
 
     function kartu(id) {
         window.location = 'medis/rekam_medis?no_medis=' + no_medis;
+    }
+
+    function hapus(id) {
+        if (confirm('Hapus catatan?')) {
+            window.location = 'hapus_catatan?id=' + id + 'refresh';
+        } else {
+            function hapus(id) {
+                window.location = 'tampil_catatan?id=' + id + 'refresh';
+            }
+        }
     }
 </script>

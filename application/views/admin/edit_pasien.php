@@ -96,13 +96,25 @@
                                         <?= form_error('alamat', '<small class="text-danger">', '</small>') ?>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label class="control-label">Tanggal Daftar</label>
-                                        <div>
-                                            <input type="date" class="form-control" name="tanggal_daftar" value="<?= $i['tanggal_daftar'] ?>" readonly>
-                                        </div>
-                                    </div>
+                                <div class="form-group has-feedback col-lg-6">
+                                    <label class="control-label">Kelurahan</label>
+                                    <input type="text" class="form-control" id="kelurahan" name="kelurahan" placeholder="kelurahan" value="<?= $i['kelurahan'] ?>">
+                                    <span style='color:red'>optional</span>
+                                </div>
+                                <div class="form-group has-feedback col-lg-6">
+                                    <label class="control-label">Kecamatan</label>
+                                    <input type="text" class="form-control" id="kecamatan" name="kecamatan" placeholder="kecamatan" value="<?= $i['kecamatan'] ?>">
+                                    <span style='color:red'>optional</span>
+                                </div>
+                                <div class="form-group has-feedback col-lg-6">
+                                    <label class="control-label">Provinsi</label>
+                                    <input type="text" class="form-control" id="provinsi" name="provinsi" placeholder="provinsi" value="<?= $i['provinsi'] ?>">
+                                    <span style='color:red'>optional</span>
+                                </div>
+                                <div class="form-group has-feedback col-lg-6">
+                                    <label class="control-label">Kode Pos</label>
+                                    <input type="text" class="form-control" id="kode Pos" name="kode_pos" placeholder="kode pos" value="<?= $i['kode_pos'] ?>" maxlength="5" minlength="5">
+                                    <span style='color:red'>optional</span>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">

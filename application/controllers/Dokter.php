@@ -26,7 +26,8 @@ class Dokter extends CI_Controller
             'date' => $nama['user']['date_created'],
             'avatar' => $nama['user']['image'],
             'label' => base_url('assets/dist/img/avatar3.png'),
-            'items' => $this->Moddokter->get_dokter()
+            'items' => $this->Moddokter->get_dokter(),
+            'catatan' => $this->Moddokter->get_catatan()
         );
 
         $this->load->view('templates/header', $data);
@@ -48,7 +49,8 @@ class Dokter extends CI_Controller
             'avatar' => $nama['user']['image'],
             'label' => base_url('assets/dist/img/avatar3.png'),
             'id' => $id,
-            'items' => $this->Moddokter->edit_dokter($id)
+            'items' => $this->Moddokter->edit_dokter($id),
+            'catatan' => $this->Moddokter->get_catatan()
 
         );
         $this->form_validation->set_rules('kode_dokter', 'Kode dokter', 'required|trim|min_length[6]|unique', [
@@ -70,8 +72,8 @@ class Dokter extends CI_Controller
             $this->db->where('email', $email);
             $this->db->update('user');
 
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>Your profile has been updated!</center></div>');
-            redirect('admin/tampil_user');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>Data dokter has been updated!</center></div>');
+            redirect('dokter');
         }
     }
     //UPDATE USER
@@ -102,7 +104,8 @@ class Dokter extends CI_Controller
             'date' => $nama['user']['date_created'],
             'avatar' => $nama['user']['image'],
             'label' => base_url('assets/dist/img/avatar3.png'),
-            'id' => $id
+            'id' => $id,
+            'catatan' => $this->Moddokter->get_catatan()
 
         );
         $this->form_validation->set_rules('kode_dokter', 'Kode dokter', 'required|trim|min_length[6]|unique', [

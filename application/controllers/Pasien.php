@@ -10,6 +10,7 @@ class Pasien extends CI_Controller
             redirect('auth');
         }
         $this->load->model('Modpasien');
+        // $this->load->model('Modadmin');
         $this->load->library('form_validation');
     }
 
@@ -24,6 +25,7 @@ class Pasien extends CI_Controller
             'date' => $nama['user']['date_created'],
             'avatar' => $nama['user']['image'],
             'label' => base_url('assets/dist/img/avatar3.png'),
+            'catatan' => $this->Modadmin->get_catatan(),
             'items' => $this->Modpasien->get_pasien1()
         );
 
@@ -51,7 +53,6 @@ class Pasien extends CI_Controller
             'required' => 'Masukan alamat pasien!'
         ]);
 
-
         if ($this->form_validation->run() == false) {
             $nama['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
             $data = array(
@@ -60,21 +61,21 @@ class Pasien extends CI_Controller
                 'email' =>  $nama['user']['email'],
                 'date' => $nama['user']['date_created'],
                 'avatar' => $nama['user']['image'],
-                'label' => base_url('assets/dist/img/avatar3.png')
+                'label' => base_url('assets/dist/img/avatar3.png'),
+                'catatan' => $this->Modadmin->get_catatan(),
+                'items' => $this->Modpasien->get_pasien1()
             );
-
-            $tanggal = DATE('Y-m-d');
-            $data = array(
-                'no_medis' => htmlspecialchars($this->input->post('no_rekam_medis', true)),
-                'nama_pasien' => htmlspecialchars($this->input->post('nama_pasien', true)),
-                'umur' => htmlspecialchars($this->input->post('umur', true)),
-                'alamat' => htmlspecialchars($this->input->post('alamat', true)),
-                'tanggal_daftar' => $tanggal
-            );
-
-            $this->db->insert('pasien', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>Tambah pasien berhasil!</center></div>');
-            redirect('pasien/tampil_pasien');
+            // $tanggal = DATE('Y-m-d');
+            // $data = array(
+            //     'no_medis' => htmlspecialchars($this->input->post('no_rekam_medis', true)),
+            //     'nama_pasien' => htmlspecialchars($this->input->post('nama_pasien', true)),
+            //     'umur' => htmlspecialchars($this->input->post('umur', true)),
+            //     'alamat' => htmlspecialchars($this->input->post('alamat', true)),
+            //     'tanggal_daftar' => $tanggal
+            // );
+            // $this->db->insert('pasien', $data);
+            // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>Tambah pasien berhasil!</center></div>');
+            // redirect('pasien/tampil_pasien');
         } else {
             $tanggal = DATE('Y-m-d');
             $data = array(
@@ -82,18 +83,21 @@ class Pasien extends CI_Controller
                 'nama_pasien' => htmlspecialchars($this->input->post('nama_pasien', true)),
                 'umur' => htmlspecialchars($this->input->post('umur', true)),
                 'alamat' => htmlspecialchars($this->input->post('alamat', true)),
+                'kelurahan' => htmlspecialchars($this->input->post('kelurahan', true)),
+                'kecamatan' => htmlspecialchars($this->input->post('kecamatan', true)),
+                'provinsi' => htmlspecialchars($this->input->post('provinsi', true)),
+                'kode_pos' => htmlspecialchars($this->input->post('kode_pos', true)),
                 'tanggal_daftar' => $tanggal
             );
 
             $this->db->insert('pasien', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>Tambah pasien berhasil!</center></div>');
             redirect('pasien/tampil_pasien');
-
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/sidebar', $data);
-            $this->load->view('templates/footer', $data);
-            $this->load->view('admin/tampil_pasien', $data);
         }
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/footer', $data);
+        $this->load->view('admin/tampil_pasien', $data);
     }
 
     public function tampil_data_pasien()
@@ -113,6 +117,7 @@ class Pasien extends CI_Controller
             'date' => $nama['user']['date_created'],
             'avatar' => $nama['user']['image'],
             'label' => base_url('assets/dist/img/avatar3.png'),
+            'catatan' => $this->Modadmin->get_catatan(),
             'id' => $id,
             'items' => $this->Modpasien->pasien($id),
         );
@@ -133,6 +138,10 @@ class Pasien extends CI_Controller
             'nama_pasien' => $this->input->post('nama_pasien'),
             'umur' => $this->input->post('umur'),
             'alamat' => $this->input->post('alamat'),
+            'kelurahan' => $this->input->post('kelurahan'),
+            'kecamatan' => $this->input->post('kecamatan'),
+            'provinsi' => $this->input->post('provinsi'),
+            'kode_pos' => $this->input->post('kode_pos'),
             'tanggal_daftar' => $tanggal
         );
 
@@ -196,7 +205,8 @@ class Pasien extends CI_Controller
             'date' => $nama['user']['date_created'],
             'avatar' => $nama['user']['image'],
             'items' => $this->Modpasien->get_data_berobat(),
-            'pasien' => $this->Modpasien->get_pasien1()
+            'pasien' => $this->Modpasien->get_pasien1(),
+            'catatan' => $this->Modadmin->get_catatan(),
         );
 
         // var_dump($data['items']);
@@ -219,7 +229,8 @@ class Pasien extends CI_Controller
             'date' => $nama['user']['date_created'],
             'avatar' => $nama['user']['image'],
             // 'items' => $this->Modpasien->get_data_berobat(),
-            'riwayat_berobat' => $this->Modpasien->get_riwayat_berobat()
+            'riwayat_berobat' => $this->Modpasien->get_riwayat_berobat(),
+            'catatan' => $this->Modadmin->get_catatan()
         );
 
         // var_dump($data['pasien']);

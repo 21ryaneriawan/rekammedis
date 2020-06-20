@@ -74,17 +74,22 @@
                                 <a href="<?= base_url('pasien/cetak') ?>" class="btn btn-danger glyphicon glyphicon-print">Cetak</a>
                                 <!-- /.box-header -->
                                 <div class="box-body">
-                                    <table id="example1" class="table table-bordered table-striped">
+                                    <table id="example1" class="table table-bordered table-striped" width='100%'>
                                         <thead>
                                             <tr>
-                                                <td>No</td>
-                                                <td width=10px>No.Med.Rec</td>
-                                                <td width=90px>Nama Pasien</td>
-                                                <td width=10px>Umur</td>
+                                                <td width='1px'>No</td>
+                                                <td width=1px>No.Med.Rec</td>
+                                                <td width=100px>Nama Pasien</td>
+                                                <td width=1px>Umur</td>
                                                 <td width=90px>Alamat</td>
+                                                <td width=10px>Kelurahan</td>
+                                                <td width=10px>Kecamatan</td>
+                                                <td width=1px>Provisi</td>
+                                                <td width=1px>Kode Pos</td>
+
                                                 <!-- <td width=10px>Kartu Pasien</td> -->
-                                                <td width=100px>Tanggal Masuk</td>
-                                                <td width=70px>Action</td>
+                                                <td width=10px>Tanggal Masuk</td>
+                                                <td width=90px>Action</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -96,6 +101,10 @@
                                                     <td><?= $i['nama_pasien'] ?></td>
                                                     <td><?= $i['umur'] ?></td>
                                                     <td><?= $i['alamat'] ?></td>
+                                                    <td><?= $i['kelurahan'] ?></td>
+                                                    <td><?= $i['kecamatan'] ?></td>
+                                                    <td><?= $i['provinsi'] ?></td>
+                                                    <td><?= $i['kode_pos'] ?></td>
                                                     <!-- <td>
                                                         <a href="<?= base_url('pasien/kartu_pasien') ?>?no_medis=<?= $i['no_medis'] ?>" class="btn btn-primary"><i class="glyphicon glyphicon-file"></i></a>
                                                     </td> -->
@@ -140,6 +149,27 @@
                                             <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Alamat" value="<?= set_value('alamat') ?>">
                                             <?= form_error('alamat', '<small class="text-danger">', '</small>') ?>
                                         </div>
+                                        <div class="form-group has-feedback col-lg-6">
+                                            <label class="control-label">Kelurahan</label>
+                                            <input type="text" class="form-control" id="kelurahan" name="kelurahan" placeholder="kelurahan" value="<?= set_value('alamat') ?>">
+                                            <span style='color:red'>optional</span>
+                                        </div>
+                                        <div class="form-group has-feedback col-lg-6">
+                                            <label class="control-label">Kecamatan</label>
+                                            <input type="text" class="form-control" id="kecamatan" name="kecamatan" placeholder="kecamatan" value="<?= set_value('alamat') ?>">
+                                            <span style='color:red'>optional</span>
+                                        </div>
+                                        <div class="form-group has-feedback col-lg-6">
+                                            <label class="control-label">Provinsi</label>
+                                            <input type="text" class="form-control" id="provinsi" name="provinsi" placeholder="provinsi" value="<?= set_value('alamat') ?>">
+                                            <span style='color:red'>optional</span>
+                                        </div>
+                                        <div class="form-group has-feedback col-lg-6">
+                                            <label class="control-label">Kode Pos</label>
+                                            <input type="text" class="form-control" id="kode Pos" name="kode Pos" placeholder="kode Pos" value="<?= set_value('alamat') ?>" maxlength="5" minlength="5">
+                                            <span style='color:red'>optional</span>
+                                        </div>
+
                                         <div class="form-group">
                                             <div>
                                                 <button type="submit" class="btn btn-success">Simpan</button>
@@ -224,6 +254,10 @@
                             '<td>' + data[i].nama_pasien + '</td>' +
                             '<td>' + data[i].umur + '</td>' +
                             '<td>' + data[i].alamat + '</td>' +
+                            '<td>' + data[i].kelurahan + '</td>' +
+                            '<td>' + data[i].kecamatan + '</td>' +
+                            '<td>' + data[i].provinsi + '</td>' +
+                            '<td>' + data[i].kode_pos + '</td>' +
                             '<td>' + "<button class='glyphicon glyphicon-file btn btn-primary'  onclick='return kartu(" + data[i].no_medis + ")'></button>" + '</td>' +
                             '<td width="100px">' + data[i].tanggal_masuk + '</td>' +
                             '<td>' + "<button class='glyphicon glyphicon-edit btn btn-primary'  onclick='return edit(" + data[i].id + ")'></button> <button class='glyphicon glyphicon-trash btn btn-danger' onclick='return hapus(" + data[i].id + ")'></button>" + '</td>' +
@@ -236,7 +270,7 @@
     });
 
     function hapus(id) {
-        if (confirm('Hapus Obat?')) {
+        if (confirm('Hapus pasien?')) {
             window.location = 'hapus_pasien?id=' + id + 'refresh';
         } else {
             function hapus(id) {

@@ -11,6 +11,7 @@ class User extends CI_Controller
         }
         $this->load->model('Moduser');
         $this->load->model('Modpasien');
+        $this->load->model('Moddokter');
         $this->load->library('form_validation');
     }
 
@@ -97,8 +98,12 @@ class User extends CI_Controller
             'avatar' => $nama['user']['image'],
             'label' => base_url('assets/dist/img/avatar3.png'),
             'items' => $this->Modpasien->get_data_berobat(),
-            'pasien' => $this->Modpasien->get_pasien1()
+            'pasien' => $this->Modpasien->get_pasien1(),
+            'catatan' => $this->Moddokter->get_catatan()
         );
+
+        // var_dump($data['catatan']);
+        // die();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_user', $data);
@@ -163,7 +168,8 @@ class User extends CI_Controller
             'date' => $nama['user']['date_created'],
             'avatar' => $nama['user']['image'],
             'label' => base_url('assets/dist/img/avatar3.png'),
-            'items' => $this->Moduser->get_rujukan()
+            'items' => $this->Moduser->get_rujukan(),
+            'catatan' => $this->Moddokter->get_catatan()
         );
 
         $this->load->view('templates/header', $data);
@@ -234,8 +240,12 @@ class User extends CI_Controller
             'date' => $nama['user']['date_created'],
             'avatar' => $nama['user']['image'],
             'label' => base_url('assets/dist/img/avatar3.png'),
-            'items' => $this->Modobat->get_catatan()
+            'items' => $this->Modobat->get_catatan(),
+            'catatan' => $this->Moddokter->get_catatan()
         );
+
+        // var_dump($data['catatan']);
+        // die();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_user', $data);
@@ -257,7 +267,8 @@ class User extends CI_Controller
             'date' => $nama['user']['date_created'],
             'avatar' => $nama['user']['image'],
             'label' => base_url('assets/dist/img/avatar3.png'),
-            'items' => $this->Modobat->catatan_obat($id)
+            'items' => $this->Modobat->catatan_obat($id),
+            'catatan' => $this->Moddokter->get_catatan()
         );
 
         $this->load->view('templates/header', $data);
@@ -273,7 +284,8 @@ class User extends CI_Controller
         $id = $this->input->post('id');
 
         $data = array(
-            'catatan_1' => $this->input->post('catatan')
+            'catatan_1' => $this->input->post('catatan'),
+            'status' => 'unread'
         );
 
         $this->Modobat->update_catatan($data, $id);

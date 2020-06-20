@@ -25,6 +25,7 @@ class Obat extends CI_Controller
             'date' => $nama['user']['date_created'],
             'avatar' => $nama['user']['image'],
             'label' => base_url('assets/dist/img/avatar3.png'),
+            'catatan' => $this->Modadmin->get_catatan(),
             'kategori' => $this->Modobat->get_kategori()
         );
 
@@ -73,21 +74,22 @@ class Obat extends CI_Controller
                 'email' =>  $nama['user']['email'],
                 'date' => $nama['user']['date_created'],
                 'avatar' => $nama['user']['image'],
-                'label' => base_url('assets/dist/img/avatar3.png')
+                'label' => base_url('assets/dist/img/avatar3.png'),
+                'catatan' => $this->Modadmin->get_catatan(),
             );
-            $tanggal = DATE('Y-m-d');
-            $isi = array(
-                'kode_obat' => htmlspecialchars($this->input->post('kode_obat', true)),
-                'nama_obat' => htmlspecialchars($this->input->post('nama_obat', true)),
-                'kategori' => htmlspecialchars($this->input->post('kategori', true)),
-                'stok' => htmlspecialchars($this->input->post('stok', true)),
-                'satuan' => htmlspecialchars($this->input->post('satuan', true)),
-                'tanggal_masuk' => $tanggal
-            );
+            // $tanggal = DATE('Y-m-d');
+            // $isi = array(
+            //     'kode_obat' => htmlspecialchars($this->input->post('kode_obat', true)),
+            //     'nama_obat' => htmlspecialchars($this->input->post('nama_obat', true)),
+            //     'kategori' => htmlspecialchars($this->input->post('kategori', true)),
+            //     'stok' => htmlspecialchars($this->input->post('stok', true)),
+            //     'satuan' => htmlspecialchars($this->input->post('satuan', true)),
+            //     'tanggal_masuk' => $tanggal
+            // );
 
-            $this->db->insert('obat', $isi);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>Tambah obat berhasil!</center></div>');
-            redirect('obat/tampil_obat');
+            // $this->db->insert('obat', $isi);
+            // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>Tambah obat berhasil!</center></div>');
+            // redirect('obat/tampil_obat');
         } else {
             $tanggal = DATE('Y-m-d');
             $data = array(
@@ -102,12 +104,11 @@ class Obat extends CI_Controller
             $this->db->insert('obat', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>Tambah obat berhasil!</center></div>');
             redirect('obat/tampil_obat');
-
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/sidebar', $data);
-            $this->load->view('templates/footer', $data);
-            $this->load->view('admin/tampil_obat', $data);
         }
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/footer', $data);
+        $this->load->view('admin/tampil_obat', $data);
     }
 
 
@@ -133,7 +134,8 @@ class Obat extends CI_Controller
             'email' =>  $nama['user']['email'],
             'date' => $nama['user']['date_created'],
             'avatar' => $nama['user']['image'],
-            'label' => base_url('assets/dist/img/avatar3.png')
+            'label' => base_url('assets/dist/img/avatar3.png'),
+            'catatan' => $this->Modadmin->get_catatan(),
         );
 
         $this->load->view('templates/header', $data);
@@ -162,7 +164,8 @@ class Obat extends CI_Controller
                 'email' =>  $nama['user']['email'],
                 'date' => $nama['user']['date_created'],
                 'avatar' => $nama['user']['image'],
-                'label' => base_url('assets/dist/img/avatar3.png')
+                'label' => base_url('assets/dist/img/avatar3.png'),
+                'catatan' => $this->Modadmin->get_catatan(),
             );
         } else {
             $data = [
@@ -202,6 +205,7 @@ class Obat extends CI_Controller
             'date' => $nama['user']['date_created'],
             'avatar' => $nama['user']['image'],
             'label' => base_url('assets/dist/img/avatar3.png'),
+            'catatan' => $this->Modadmin->get_catatan(),
             // 'id' => $id,
             'items' => $this->Modobat->get_data_obat($id),
             'kategori' => $this->Modobat->get_kategori_obat()
@@ -225,7 +229,8 @@ class Obat extends CI_Controller
             'email' =>  $nama['user']['email'],
             'avatar' => $nama['user']['image'],
             'items' => $this->Modobat->get_data_obat($id),
-            'kategori' => $this->Modobat->get_kategori_obat()
+            'kategori' => $this->Modobat->get_kategori_obat(),
+            'catatan' => $this->Modadmin->get_catatan(),
         );
 
         // var_dump($data['items']);
@@ -297,6 +302,7 @@ class Obat extends CI_Controller
             'date' => $nama['user']['date_created'],
             'avatar' => $nama['user']['image'],
             'label' => base_url('assets/dist/img/avatar3.png'),
+            'catatan' => $this->Modadmin->get_catatan(),
             // 'id' => $id,
             'items' => $this->Modpasien->ambil_obat(),
             'obat' => $this->Modobat->get_obat()
@@ -322,6 +328,7 @@ class Obat extends CI_Controller
             'date' => $nama['user']['date_created'],
             'avatar' => $nama['user']['image'],
             'label' => base_url('assets/dist/img/avatar3.png'),
+            'catatan' => $this->Modadmin->get_catatan(),
             // 'id' => $id,
             'items' => $this->Modpasien->data_rekam($id),
             'obat' => $this->Modobat->get_obat(),
@@ -357,7 +364,9 @@ class Obat extends CI_Controller
 
         $data = array(
             'id_rekam_medis' => $id,
-            'catatan' => $this->input->post('catatan')
+            'catatan' => $this->input->post('catatan'),
+            'catatan_1' => '',
+            'status' => 'read'
         );
 
         $this->db->insert('data_report', $data);
@@ -374,12 +383,26 @@ class Obat extends CI_Controller
             'date' => $nama['user']['date_created'],
             'avatar' => $nama['user']['image'],
             'label' => base_url('assets/dist/img/avatar3.png'),
+            'catatan' => $this->Modadmin->get_catatan(),
             'items' => $this->Modobat->get_catatan()
         );
+
+        // var_dump($data['items']);
+        // die();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/footer', $data);
         $this->load->view('admin/catatan_obat', $data);
+    }
+
+    //HAPUS catatan
+    public function hapus_catatan()
+    {
+        $id = $this->input->get('id');
+
+        $this->Modobat->hapus_catatan($id);
+
+        redirect('obat/catatan_obat', 'refresh');
     }
 }

@@ -95,7 +95,7 @@
                             <!-- /.box-body -->
                             <div class="box-footer">
                                 <button type="submit" class="btn btn-primary">Edit</button>
-                                <a href="<?= base_url('admin/tampil_user') ?>" type="submit" class="btn btn-danger">Cancel</a>
+                                <a href="<?= base_url('dokter') ?>" type="submit" class="btn btn-danger">Cancel</a>
                             </div>
                         </form>
                     </div>

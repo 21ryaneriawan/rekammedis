@@ -69,6 +69,7 @@ class Modobat extends CI_Model
         $q = $this->db->query("SELECT r.catatan, r.catatan_1, r.id, m.diagnosa, m.terapi, m.tensi, p.no_medis, p.nama_pasien, p.umur 
         FROM data_report r, rekam_medis m, pasien p
         WHERE m.id=r.id_rekam_medis AND p.no_medis=m.no_medis
+        ORDER BY r.id DESC
         ");
         return $q->result_array();
     }
@@ -95,6 +96,12 @@ class Modobat extends CI_Model
         $this->db->where('id', $id);
         $q = $this->db->update('data_report', $data);
 
+        return $q;
+    }
+
+    function hapus_catatan($id)
+    {
+        $q = $this->db->where('id', $id)->delete('data_report');
         return $q;
     }
 }

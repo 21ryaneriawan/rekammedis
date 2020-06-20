@@ -31,7 +31,7 @@
                      <span>Edit Profile</span>
                  </a>
              </li> -->
-             <li>
+             <li <?= $this->uri->segment(2) == 'pasien' || $this->uri->segment(1) == '' ? 'class="active"' : '' ?>>
                  <a href="<?= base_url('user/pasien'); ?>">
                      <i class="fa fa-fw fa-video-camera"></i>
                      <span>Rekam Medis</span>
@@ -43,16 +43,20 @@
                      <span>Rekam Medis</span>
                  </a>
              </li> -->
-             <li>
+             <li <?= $this->uri->segment(2) == 'tampil_rujukan' ? 'class="active"' : '' ?>>
                  <a href="<?php echo base_url('user/tampil_rujukan'); ?>">
                      <i class="fa fa-fw fa-ambulance"></i>
                      <span>Rujukan</span>
                  </a>
              </li>
-             <li>
+             <li <?= $this->uri->segment(2) == 'catatan' ? 'class="active"' : '' ?>>
                  <a href="<?php echo base_url('user/catatan'); ?>">
                      <i class="fa fa-fw fa-file"></i>
                      <span>Catatan</span>
+
+                     <span class="pull-right-container">
+                         <span class="label label-primary pull-right"><?= $catatan; ?></span>
+                     </span>
                  </a>
              </li>
          </ul>

@@ -32,6 +32,7 @@ class Admin extends CI_Controller
 
         $nama['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data = array(
+            'catatan' => $this->Modadmin->get_catatan(),
             'title' => 'Dashboard',
             'name' =>  $nama['user']['name'],
             'email' =>  $nama['user']['email'],
@@ -42,6 +43,7 @@ class Admin extends CI_Controller
             'jml_pasien' => $this->Modadmin->jml_pasien(),
             'jml_obat' => $this->Modadmin->jml_obat(),
             'jml_dokter' => $this->Modadmin->jml_dokter(),
+            'catatan' => $this->Modadmin->get_catatan(),
             // 'datagrafik' => $this->Modadmin->get_grafik(),
             'datagrafik' => $datamasuk,
             'datagrafik2' => $datamasuk2,
@@ -96,6 +98,7 @@ class Admin extends CI_Controller
 
         $nama['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data = array(
+            'catatan' => $this->Modadmin->get_catatan(),
             'title' => 'Data User',
             'name' =>  $nama['user']['name'],
             'email' =>  $nama['user']['email'],
@@ -139,7 +142,8 @@ class Admin extends CI_Controller
                 'email' =>  $nama['user']['email'],
                 'date' => $nama['user']['date_created'],
                 'avatar' => $nama['user']['image'],
-                'label' => base_url('assets/dist/img/avatar3.png')
+                'label' => base_url('assets/dist/img/avatar3.png'),
+                'catatan' => $this->Modadmin->get_catatan(),
             );
         } else {
             $data = [
@@ -167,6 +171,7 @@ class Admin extends CI_Controller
         $id = $this->input->get('id');
         $nama['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data = array(
+            'catatan' => $this->Modadmin->get_catatan(),
             'title' => 'Data User',
             'name' =>  $nama['user']['name'],
             'email' =>  $nama['user']['email'],
@@ -292,7 +297,8 @@ class Admin extends CI_Controller
             'date' => $nama['user']['date_created'],
             'avatar' => $nama['user']['image'],
             'password' => $nama['user']['password'],
-            'label' => base_url('assets/dist/img/avatar3.png')
+            'label' => base_url('assets/dist/img/avatar3.png'),
+            'catatan' => $this->Modadmin->get_catatan(),
 
         );
         $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', [

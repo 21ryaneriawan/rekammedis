@@ -45,6 +45,16 @@ class Modadmin extends CI_Model
         return $q->row()->role;
     }
 
+    function get_catatan()
+    {
+        $data = $this->db->query("
+            SELECT COUNT(*) as total
+            FROM data_report
+            WHERE status='unread'");
+
+        return $data->row()->total;
+    }
+
     function get_user()
     {
         $data = $this->db->query("
@@ -281,6 +291,7 @@ class Modadmin extends CI_Model
         $data = $this->db->query("SELECT *, @no:=@no+1 as nomor, DATE_FORMAT(tanggal_daftar, ('%d %M %Y')) as tanggal_masuk FROM pasien, (SELECT @no:= 0) AS nomor ");
         return $data->result_array();
     }
+
 
     // function get_dokter()
     // {

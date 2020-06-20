@@ -78,9 +78,9 @@
                                         <thead>
                                             <tr>
                                                 <td width=1px>No</td>
-                                                <td width=80px>Nama</td>
-                                                <td width=50px>Email</td>
-                                                <td width=5px>Password</td>
+                                                <td width=150px>Nama</td>
+                                                <td width=150px>Email</td>
+                                                <!-- <td width=5px>Password</td> -->
                                                 <td width=10px>Status</td>
                                                 <td width=100px>Action</td>
                                             </tr>
@@ -168,7 +168,7 @@
                             '<td>' + n++ + '</td>' +
                             '<td>' + data[i].name + '</td>' +
                             '<td>' + data[i].email + '</td>' +
-                            '<td>' + data[i].password + '</td>' +
+                            // '<td>' + data[i].password + '</td>' +
                             '<td>' + data[i].status + '</td>' +
                             '<td>' + "<button class='glyphicon glyphicon-edit btn btn-primary'  onclick='return edit(" + data[i].id + ")'></button> <button class='glyphicon glyphicon-trash btn btn-danger' onclick='return hapus(" + data[i].id + ")'></button>" + '</td>' +
                             '</tr>';

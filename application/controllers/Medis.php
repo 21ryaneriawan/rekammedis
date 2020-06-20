@@ -28,6 +28,7 @@ class Medis extends CI_Controller
             'date' => $nama['user']['date_created'],
             'avatar' => $nama['user']['image'],
             'label' => base_url('assets/dist/img/avatar3.png'),
+            'catatan' => $this->Modadmin->get_catatan(),
             'items' => $this->Modpasien->get_pasien($tanggal)
         );
 
@@ -51,6 +52,7 @@ class Medis extends CI_Controller
             'date' => $nama['user']['date_created'],
             'avatar' => $nama['user']['image'],
             'label' => base_url('assets/dist/img/avatar3.png'),
+            'catatan' => $this->Modadmin->get_catatan(),
             'items' => $this->Modpasien->get_data_pasien($no_medis),
             'medis' => $this->Modpasien->get_rekam_medis($no_medis),
             'get_id' => $this->Modpasien->data_medis($id)
@@ -92,7 +94,7 @@ class Medis extends CI_Controller
             'date' => $nama['user']['date_created'],
             'avatar' => $nama['user']['image'],
             'label' => base_url('assets/dist/img/avatar3.png'),
-            'label' => base_url('assets/dist/img/avatar3.png'),
+            'catatan' => $this->Modadmin->get_catatan(),
             'items' => $this->Moduser->get_rujukan()
         );
 
@@ -134,6 +136,7 @@ class Medis extends CI_Controller
             'avatar' => $nama['user']['image'],
             'id' => $id,
             'items' => $this->Modpasien->get_data_medis($id),
+            'catatan' => $this->Modadmin->get_catatan(),
         );
 
         // var_dump($data['items']);
@@ -260,6 +263,7 @@ class Medis extends CI_Controller
             'date' => $nama['user']['date_created'],
             'avatar' => $nama['user']['image'],
             'label' => base_url('assets/dist/img/avatar3.png'),
+            'catatan' => $this->Modadmin->get_catatan(),
             'items' => $this->Modobat->catatan_obat($id)
         );
 
@@ -275,7 +279,8 @@ class Medis extends CI_Controller
         $id = $this->input->post('id');
 
         $data = array(
-            'catatan_1' => $this->input->post('catatan')
+            'catatan_1' => $this->input->post('catatan'),
+            'status' => 'read'
         );
 
         $this->Modobat->update_catatan($data, $id);
