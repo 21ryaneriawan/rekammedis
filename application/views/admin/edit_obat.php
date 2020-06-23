@@ -110,6 +110,11 @@
                                         <?= form_error('satuan', '<small class="text-danger">', '</small>') ?>
                                     </div>
                                 </div>
+                                <div class="col-lg-6">
+                                    <label class="control-label">Deskripsi</label>
+                                    <textarea class="textarea" name="deskripsi" id="deskripsi" placeholder="Place some text here" value="" style="width: 100%; height: 100px; font-size: 12px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?= $i['deskripsi'] ?></textarea>
+                                    <?= form_error('deskripsi', '<small class="text-danger">', '</small>') ?>
+                                </div>
                                 <!-- <div class="col-lg-6">
                                 <div class="form-group">
                                     <label class="control-label">Tanggal Masuk</label>

@@ -1,16 +1,21 @@
 <style>
     .judul {
-        font-weight: 600;
-        font-family: Arial, Helvetica, sans-serif;
-        text-align: center
+        font-size: 16px;
+        font-family: 'Times New Roman', Times, serif;
+        text-align: center;
+    }
+
+    .isi {
+        font-size: 14px;
+        font-family: 'Times New Roman', Times, serif;
     }
 </style>
 
 <div class="judul">
-    KARTU PASIEN<br>RUMAH SEHAT ERIADO
+    <b>KARTU PASIEN<br>RUMAH SEHAT ERIADO</b>
 </div>
 <hr>
-<table>
+<table class="isi">
     <?php foreach ($data_diri as $d) { ?>
         <tr>
             <th>Tanggal</th>
@@ -48,7 +53,7 @@
     </tr>
     <?php foreach ($items as $i) { ?>
         <tr>
-            <td colspan="2"><?= $i['terapi'] ?></td>
+            <td colspan="2"><textarea cols="30" rows="10" style="width: 100%; height: 100px; font-family:'Times New Roman', Times, serif; font-size: 12px; line-height: 18px; border: 0px solid #dddddd; padding: 10px;"><?= $i['terapi'] ?></textarea></td>
         </tr>
     <?php } ?>
 </table>

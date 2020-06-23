@@ -67,18 +67,18 @@
                                 <div class="form-group">
                                     <div class="form-group">
                                         <label for="kode_dokter">Kode Dokter</label>
-                                        <input type="text" class="form-control" name="kode_dokter" required>
+                                        <input type="text" class="form-control" name="kode_dokter" value="<?= set_value('kode_dokter') ?>" maxlength="6" maxlength="6">
                                         <?= form_error('kode_dokter', '<small class="text-danger">', '</small>') ?>
                                     </div>
                                     <div class="form-group">
                                         <label for="nama">Nama</label>
-                                        <input type="text" class="form-control" name="nama" required>
+                                        <input type="text" class="form-control" name="nama" value="<?= set_value('nama') ?>">
                                         <?= form_error('nama', '<small class="text-danger">', '</small>') ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Jenis Kelamin</label>
-                                    <select class="form-control" name="jk" required>
+                                    <select class="form-control" name="jk" value="<?= set_value('jk') ?>">
                                         <option value="L">Laki-laki</option>
                                         <option value="P">Perempuan</option>
                                     </select>
@@ -86,13 +86,13 @@
                                 <div class="form-group">
                                     <label for="poli">Poli</label>
                                     <?= form_error('poli', '<small class="text-danger">', '</small>') ?>
-                                    <input type="poli" class="form-control" id="poli" name="poli" placeholder="poli" required>
+                                    <input type="poli" class="form-control" id="poli" name="poli" placeholder="poli" value="<?= set_value('poli') ?>">
                                 </div>
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
                                 <button type="submit" class="btn btn-primary">Tambah</button>
-                                <a href="<?= base_url('admin/tampil_user') ?>" type="submit" class="btn btn-danger">Cancel</a>
+                                <a href="<?= base_url('dokter') ?>" type="submit" class="btn btn-danger">Cancel</a>
                             </div>
                         </form>
                     </div>

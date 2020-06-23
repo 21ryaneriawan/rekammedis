@@ -113,7 +113,7 @@
                                 </div>
                                 <div class="form-group has-feedback col-lg-6">
                                     <label class="control-label">Kode Pos</label>
-                                    <input type="text" class="form-control" id="kode Pos" name="kode_pos" placeholder="kode pos" value="<?= $i['kode_pos'] ?>" maxlength="5" minlength="5">
+                                    <input type="text" class="form-control" id="kode_pos" name="kode_pos" placeholder="kode pos" value="<?= $i['kode_pos'] ?>" maxlength="5" minlength="5">
                                     <span style='color:red'>optional</span>
                                 </div>
                                 <div class="col-lg-12">

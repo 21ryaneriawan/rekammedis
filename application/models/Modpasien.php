@@ -47,7 +47,7 @@ class Modpasien extends CI_Model
 
     function get_rekam_medis($id)
     {
-        $data = $this->db->query("SELECT id, no_medis, tensi, DATE_FORMAT(tanggal, ('%d %M %Y')) as tanggal, diagnosa, terapi FROM rekam_medis WHERE no_medis='$id' ORDER BY id DESC");
+        $data = $this->db->query("SELECT r.id, r.no_medis, r.tensi, DATE_FORMAT(r.tanggal, ('%d %M %Y')) as tanggal, r.diagnosa, r.terapi, p.nama_pasien FROM rekam_medis r, pasien p WHERE p.no_medis=r.no_medis AND r.no_medis='$id' ORDER BY id DESC");
         return $data->result_array();
     }
 
@@ -95,6 +95,12 @@ class Modpasien extends CI_Model
         return $q;
     }
 
+    function hapus_rujukan($id)
+    {
+        $q = $this->db->where('id', $id)->delete('data_rujukan');
+        return $q;
+    }
+
     function hapus_medis($id)
     {
         $q = $this->db->where('id', $id)->delete('rekam_medis');
@@ -121,7 +127,7 @@ class Modpasien extends CI_Model
 
     function ambil_obat()
     {
-        $data = $this->db->query("SELECT p.*, r.* FROM pasien p, rekam_medis r WHERE p.no_medis=r.no_medis AND r.status='ambil obat' ORDER BY r.id DESC");
+        $data = $this->db->query("SELECT p.*, r.* FROM pasien p, rekam_medis r WHERE p.no_medis=r.no_medis AND r.status='ambil obat'");
         return $data->result_array();
     }
 

@@ -92,6 +92,7 @@
                                                 <td><?= $i['nama_rumah_sakit'] ?></td>
                                                 <td><?= $i['nama_poli'] ?></td>
                                                 <td><a href="<?= base_url('user/cetak_rujukan') ?>?id=<?= $i['id'] ?>"><i class="glyphicon glyphicon-file btn btn-primary"></i> </a> </td>
+
                                             </tr>
                                         <?php $no++;
                                         } ?>

@@ -178,6 +178,15 @@ class Medis extends CI_Controller
         redirect('medis/rekam_medis?no_medis=' . $no_medis, 'refresh');
     }
 
+    public function hapus_rujukan()
+    {
+        $id = $this->input->get('id');
+
+        $this->Modpasien->hapus_rujukan($id);
+
+        redirect('user/tampil_rujukan', 'refresh');
+    }
+
     public function hapus_antrian()
     {
         $id = $this->input->get('id');
@@ -257,7 +266,7 @@ class Medis extends CI_Controller
 
         $nama['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data = array(
-            // 'title' => 'Rujukan',
+            'title' => 'Catatan',
             'name' =>  $nama['user']['name'],
             'email' =>  $nama['user']['email'],
             'date' => $nama['user']['date_created'],

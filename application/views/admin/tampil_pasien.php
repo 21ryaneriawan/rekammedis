@@ -74,22 +74,21 @@
                                 <a href="<?= base_url('pasien/cetak') ?>" class="btn btn-danger glyphicon glyphicon-print">Cetak</a>
                                 <!-- /.box-header -->
                                 <div class="box-body">
-                                    <table id="example1" class="table table-bordered table-striped" width='100%'>
+                                    <table id="example1" class="table table-bordered table-striped" width='150%'>
                                         <thead>
                                             <tr>
                                                 <td width='1px'>No</td>
                                                 <td width=1px>No.Med.Rec</td>
-                                                <td width=100px>Nama Pasien</td>
+                                                <td width=120px>Nama Pasien</td>
                                                 <td width=1px>Umur</td>
                                                 <td width=90px>Alamat</td>
                                                 <td width=10px>Kelurahan</td>
                                                 <td width=10px>Kecamatan</td>
                                                 <td width=1px>Provisi</td>
                                                 <td width=1px>Kode Pos</td>
-
                                                 <!-- <td width=10px>Kartu Pasien</td> -->
                                                 <td width=10px>Tanggal Masuk</td>
-                                                <td width=90px>Action</td>
+                                                <td width=70px>Action</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -131,7 +130,7 @@
                                     <form action="<?= base_url('pasien/tambah_pasien') ?>" method="post">
                                         <div class="form-group has-feedback">
                                             <label class="control-label">No Rekam Medis</label>
-                                            <input type="text" class="form-control" id="no_rekam_medis" name="no_rekam_medis" placeholder="No rekam medis" value="<?= set_value('no_rekam_medis') ?>">
+                                            <input type="text" class="form-control" id="no_rekam_medis" name="no_rekam_medis" placeholder="No rekam medis" value="<?= set_value('no_rekam_medis') ?>" minlength="9" maxlength="9">
                                             <?= form_error('no_rekam_medis', '<small class="text-danger">', '</small>') ?>
                                         </div>
                                         <div class="form-group has-feedback">
@@ -151,22 +150,22 @@
                                         </div>
                                         <div class="form-group has-feedback col-lg-6">
                                             <label class="control-label">Kelurahan</label>
-                                            <input type="text" class="form-control" id="kelurahan" name="kelurahan" placeholder="kelurahan" value="<?= set_value('alamat') ?>">
+                                            <input type="text" class="form-control" id="kelurahan" name="kelurahan" placeholder="kelurahan" value="<?= set_value('kelurahan') ?>">
                                             <span style='color:red'>optional</span>
                                         </div>
                                         <div class="form-group has-feedback col-lg-6">
                                             <label class="control-label">Kecamatan</label>
-                                            <input type="text" class="form-control" id="kecamatan" name="kecamatan" placeholder="kecamatan" value="<?= set_value('alamat') ?>">
+                                            <input type="text" class="form-control" id="kecamatan" name="kecamatan" placeholder="kecamatan" value="<?= set_value('kecamatan') ?>">
                                             <span style='color:red'>optional</span>
                                         </div>
                                         <div class="form-group has-feedback col-lg-6">
                                             <label class="control-label">Provinsi</label>
-                                            <input type="text" class="form-control" id="provinsi" name="provinsi" placeholder="provinsi" value="<?= set_value('alamat') ?>">
+                                            <input type="text" class="form-control" id="provinsi" name="provinsi" placeholder="provinsi" value="<?= set_value('provinsi') ?>">
                                             <span style='color:red'>optional</span>
                                         </div>
                                         <div class="form-group has-feedback col-lg-6">
                                             <label class="control-label">Kode Pos</label>
-                                            <input type="text" class="form-control" id="kode Pos" name="kode Pos" placeholder="kode Pos" value="<?= set_value('alamat') ?>" maxlength="5" minlength="5">
+                                            <input type="text" class="form-control" id="kode Pos" name="kode_pos" placeholder="kode pos" value="<?= set_value('kode_pos') ?>" maxlength="5" minlength="5">
                                             <span style='color:red'>optional</span>
                                         </div>
 

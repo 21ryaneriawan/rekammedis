@@ -163,7 +163,7 @@
                                         foreach ($get_id as $m) {
                                         ?>
                                             <input type="hidden" name="id" class="form-control" id="id" value="<?= $m['id'] ?>">
-                                            <input type="hidden" name="no_medis" class="form-control" id="no_medis" value="<?= $m['no_medis'] ?>">
+                                            <input type="hidden" name="no_medis" class="form-control" id="no_medis" value="<?= $m['no_medis'] ?>" minlength="9" maxlength="9">
                                             <div>
                                                 <label class="control-label">Tensi</label>
                                                 <input type="text" class="form-control" name="tensi" id="tensi" placeholder="Place some text here" required>

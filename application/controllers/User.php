@@ -128,9 +128,11 @@ class User extends CI_Controller
             'items' => $this->Modpasien->get_data_pasien($no_medis),
             'medis' => $this->Modpasien->get_rekam_medis($no_medis),
             'get_id' => $this->Modpasien->data_medis($id),
+            'catatan' => $this->Moddokter->get_catatan()
             // 'dokter' => $this->Moduser->get_dokter()
         );
-
+        // var_dump($data['medis']);
+        // die();
 
 
         $this->load->view('templates/header', $data);
@@ -174,8 +176,8 @@ class User extends CI_Controller
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_user', $data);
-        $this->load->view('user/tampil_rujukan', $data);
         $this->load->view('templates/footer', $data);
+        $this->load->view('user/tampil_rujukan', $data);
     }
 
     public function input_rujukan()
@@ -261,7 +263,7 @@ class User extends CI_Controller
 
         $nama['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data = array(
-            // 'title' => 'Rujukan',
+            'title' => 'Catatan',
             'name' =>  $nama['user']['name'],
             'email' =>  $nama['user']['email'],
             'date' => $nama['user']['date_created'],

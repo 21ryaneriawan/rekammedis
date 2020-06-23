@@ -100,15 +100,15 @@
                                                 <td>No.Med.Rec</td>
                                                 <td style="padding-left: 5px;">:</td>
                                                 <td style="padding-right: 35rem;"><?= $i['no_medis'] ?></td>
-                                                <td>No Peserta Akses</td>
-                                                <td>:</td>
+                                                <!-- <td>No Peserta Akses</td>
+                                                <td>:</td> -->
                                             </tr>
                                             </tr>
                                             <tr>
                                                 <td>Nama Pasien</td>
                                                 <td>:</td>
                                                 <td><?= $i['nama_pasien'] ?></td>
-                                                <td><u>(<?= $i['nama_pasien'] ?>)</u></td>
+                                                <!-- <td><u>(<?= $i['nama_pasien'] ?>)</u></td> -->
                                             </tr>
                                             <tr>
                                                 <td>Umur</td>
@@ -139,10 +139,13 @@
                                                     <td><?= $m['tanggal'] ?></td>
                                                     <td><?= $m['tensi'] ?></td>
                                                     <td><?= $m['diagnosa'] ?></td>
-                                                    <td><textarea style="height:100px; width:250px"><?= $m['terapi'] ?></textarea></td>
+                                                    <td>
+                                                        <p style="height:100px; width:250px"><?= $m['terapi'] ?></p>
+                                                    </td>
                                                     <td>
                                                         <a href="<?= base_url('medis/hapus_medis') ?>?id=<?= $m['id']; ?>&&no_medis=<?= $m['no_medis']; ?>" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
-                                                        </<a>
+                                                        </a>
+                                                    </td>
                                                 </tr>
                                             <?php } ?>
                                         </tbody>
@@ -251,8 +254,8 @@
                     <?php foreach ($get_id as $m) { ?>
                         <input type="hidden" name="id" class="form-control" id="id" value="<?= $m['id'] ?>">
                         <input type="hidden" name="no_medis" class="form-control" id="no_medis" value="<?= $m['no_medis'] ?>">
-                        <input type="hidden" name="dokter" class="form-control" id="dokter" value="<?= $m['nama'] ?>">
                     <?php } ?>
+                    <input type="hidden" name="dokter" class="form-control" id="dokter" value="<?= $name ?>">
                     <label for="">Nama Rumah Sakit</label>
                     <input type="text" name="nama_rumah_sakit" id="nama_rumah_sakit" class="form-control" required>
 

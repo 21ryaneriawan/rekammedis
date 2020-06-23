@@ -83,6 +83,7 @@
                                                 <td width=5px>Kategori</td>
                                                 <td width=5px>Stok</td>
                                                 <td width=5px>Satuan</td>
+                                                <td width=5px>Deskripsi</td>
                                                 <td width="50%">Tanggal Masuk</td>
                                                 <td width=70px>Action</td>
                                             </tr>
@@ -133,6 +134,12 @@
                                             <label class="control-label">Satuan</label>
                                             <input type="text" class="form-control" id="satuan" name="satuan" placeholder="Satuan" value="<?= set_value('satuan') ?>">
                                             <?= form_error('satuan', '<small class="text-danger">', '</small>') ?>
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            <label class="control-label">Deskripsi</label>
+                                            <textarea class="textarea" name="deskripsi" id="deskripsi" placeholder="Place some text here" style="width: 100%; height: 100px; font-size: 12px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                            <!-- <input type="text" class="textarea" id="deskripsi" name="deskripsi" placeholder="deskripsi" value="<?= set_value('deskripsi') ?>"> -->
+                                            <?= form_error('deskripsi', '<small class="text-danger">', '</small>') ?>
                                         </div>
                                         <div class="form-group">
                                             <div>
@@ -219,6 +226,7 @@
                             '<td>' + data[i].kategori + '</td>' +
                             '<td>' + data[i].stok + '</td>' +
                             '<td>' + data[i].satuan + '</td>' +
+                            '<td>' + data[i].deskripsi + '</td>' +
                             '<td>' + data[i].tanggal_masuk + '</td>' +
                             '<td>' + "<button class='glyphicon glyphicon-edit btn btn-primary'  onclick='return edit(" + data[i].id + ")'></button> <button class='glyphicon glyphicon-trash btn btn-danger' onclick='return hapus(" + data[i].id + ")'></button>" + '</td>' +
                             '</tr>';
@@ -230,7 +238,7 @@
     });
 
     function hapus(id) {
-        if (confirm('Hapus Kategori Obat?')) {
+        if (confirm('Hapus Data Obat?')) {
             window.location = 'hapus_obat?id=' + id + 'refresh';
         } else {
             function hapus(id) {

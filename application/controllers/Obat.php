@@ -98,6 +98,7 @@ class Obat extends CI_Controller
                 'kategori' => htmlspecialchars($this->input->post('kategori', true)),
                 'stok' => htmlspecialchars($this->input->post('stok', true)),
                 'satuan' => htmlspecialchars($this->input->post('satuan', true)),
+                'deskripsi' => htmlspecialchars($this->input->post('deskripsi', true)),
                 'tanggal_masuk' => $tanggal
             );
 
@@ -199,7 +200,7 @@ class Obat extends CI_Controller
         $id = $this->input->get('id');
         $nama['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data = array(
-            'title' => 'Data User',
+            'title' => 'Edit obat',
             'name' =>  $nama['user']['name'],
             'email' =>  $nama['user']['email'],
             'date' => $nama['user']['date_created'],
@@ -210,6 +211,8 @@ class Obat extends CI_Controller
             'items' => $this->Modobat->get_data_obat($id),
             'kategori' => $this->Modobat->get_kategori_obat()
         );
+        // var_dump($data['items']);
+        // die();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -253,6 +256,7 @@ class Obat extends CI_Controller
             'kategori' => $this->input->post('kategori'),
             'stok' => $this->input->post('stok'),
             'satuan' => $this->input->post('satuan'),
+            'deskripsi' => $this->input->post('deskripsi'),
             'tanggal_masuk' => $tanggal
         );
 

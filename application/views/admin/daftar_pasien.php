@@ -41,7 +41,7 @@
     <?php foreach ($item as $i) { ?>
         <tr>
             <td align="center"><?= $i['nomor'] ?></td>
-            <td><?= $i['no_medis'] ?></td>
+            <td align="center"><?= $i['no_medis'] ?></td>
             <td><?= $i['nama_pasien'] ?></td>
             <td align="center"><?= $i['umur'] ?></td>
             <td><?= $i['alamat'] ?></td>
@@ -49,7 +49,7 @@
             <td><?= $i['kecamatan'] ?></td>
             <td><?= $i['provinsi'] ?></td>
             <td><?= $i['kode_pos'] ?></td>
-            <td><?= $i['tanggal_masuk'] ?></td>
+            <td align="center"><?= $i['tanggal_masuk'] ?></td>
         </tr>
     <?php } ?>
 </table>

@@ -64,6 +64,7 @@ class Pasien extends CI_Controller
                 'label' => base_url('assets/dist/img/avatar3.png'),
                 'catatan' => $this->Modadmin->get_catatan(),
                 'items' => $this->Modpasien->get_pasien1()
+
             );
             // $tanggal = DATE('Y-m-d');
             // $data = array(

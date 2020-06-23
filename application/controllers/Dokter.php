@@ -76,7 +76,7 @@ class Dokter extends CI_Controller
             redirect('dokter');
         }
     }
-    //UPDATE USER
+    //UPDATE DOKTER
     public function update_dokter()
     {
         $id = $this->input->post('id');
@@ -95,28 +95,24 @@ class Dokter extends CI_Controller
     //TAMBAH DOKTER
     public function tambah_dokter()
     {
-        $id = $this->input->get('id');
-        $nama['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data = array(
-            'title' => 'tambah Data Dokter',
-            'name' =>  $nama['user']['name'],
-            'email' =>  $nama['user']['email'],
-            'date' => $nama['user']['date_created'],
-            'avatar' => $nama['user']['image'],
-            'label' => base_url('assets/dist/img/avatar3.png'),
-            'id' => $id,
-            'catatan' => $this->Moddokter->get_catatan()
-
-        );
-        $this->form_validation->set_rules('kode_dokter', 'Kode dokter', 'required|trim|min_length[6]|unique', [
+        $this->form_validation->set_rules('kode_dokter', 'Kode dokter', 'required|trim|min_length[6]|is_unique[data_dokter.kode_dokter]', [
             'min_length' => 'kode dokter to shoort!',
-            'unique' => 'kode dokter sudah digunakan'
+            'is_unique' => 'kode dokter sudah digunakan'
         ]);
         if ($this->form_validation->run() == false) {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/sidebar', $data);
-            $this->load->view('templates/footer');
-            $this->load->view('dokter/tambah_dokter', $data);
+            $id = $this->input->get('id');
+            $nama['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+            $data = array(
+                'title' => 'Tambah Data Dokter',
+                'name' =>  $nama['user']['name'],
+                'email' =>  $nama['user']['email'],
+                'date' => $nama['user']['date_created'],
+                'avatar' => $nama['user']['image'],
+                'label' => base_url('assets/dist/img/avatar3.png'),
+                'id' => $id,
+                'catatan' => $this->Moddokter->get_catatan(),
+                'items' => $this->Moddokter->get_dokter()
+            );
         } else {
             $data = array(
                 'kode_dokter' => $this->input->post('kode_dokter'),
@@ -124,12 +120,14 @@ class Dokter extends CI_Controller
                 'jk' => $this->input->post('jk'),
                 'poli' => $this->input->post('poli')
             );
-
             $this->db->insert('data_dokter', $data);
-
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>Data dokter berhasil ditambah!</center></div>');
             redirect('dokter');
         }
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/footer');
+        $this->load->view('dokter/tambah_dokter', $data);
     }
     // public function insert_dokter()
     // {

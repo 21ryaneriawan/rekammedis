@@ -79,6 +79,7 @@
                                             <th width="20%">Rumah Sakit</th>
                                             <th width="15%">Poli</th>
                                             <th width="1%">Surat Rujukan</th>
+                                            <th width="1%">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -92,6 +93,10 @@
                                                 <td><?= $i['nama_rumah_sakit'] ?></td>
                                                 <td><?= $i['nama_poli'] ?></td>
                                                 <td><a href="<?= base_url('user/cetak_rujukan') ?>?id=<?= $i['id'] ?>"><i class="glyphicon glyphicon-file btn btn-primary"></i> </a> </td>
+                                                <td>
+                                                    <a href="<?= base_url('medis/hapus_rujukan') ?>?id=<?= $i['id']; ?>" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
+                                                    </a>
+                                                </td>
                                             </tr>
                                         <?php $no++;
                                         } ?>

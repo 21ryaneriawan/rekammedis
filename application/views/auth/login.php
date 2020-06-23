@@ -24,7 +24,7 @@
                     <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     <?= form_error('password', '<small class="text-danger">', '</small>') ?>
-                </div>
+                </div><br><br>
                 <div class="row">
                     <div class="col-xs-12">
                         <button type="submit" class="btn btn-primary btn-block btn-flat">Login</button>

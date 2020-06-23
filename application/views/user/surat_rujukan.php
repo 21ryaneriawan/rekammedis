@@ -16,7 +16,7 @@
         padding-bottom: 2rem;
     }
 
-    .ttd{
+    .ttd {
         padding-top: 6rem;
         text-align: right;
     }
@@ -86,7 +86,7 @@
             <th colspan="3">Salam sejawat, <?= $i['tanggal'] ?> </th>
         </tr>
         <tr>
-            <th colspan="3" class="ttd">(Dr. <?= $i['dokter']?>)</th>
+            <th colspan="3" class="ttd">(<?= $i['dokter'] ?>)</th>
         </tr>
     </table>
 <?php } ?>

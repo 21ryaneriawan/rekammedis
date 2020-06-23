@@ -27,12 +27,12 @@
         <tr>
             <td width="23%"></td>
             <td width="50%"></td>
-            <td>Nama Peserta Akses :</td>
+            <!-- <td>Nama Peserta Akses :</td> -->
         </tr>
         <tr>
             <td>No.Rec.Medis</td>
             <td>: <?= $i['no_medis'] ?></td>
-            <td><u><?= $i['nama_pasien'] ?></u></td>
+            <!-- <td><u><?= $i['nama_pasien'] ?></u></td> -->
         </tr>
         <tr>
             <td>Nama Pasien</td>

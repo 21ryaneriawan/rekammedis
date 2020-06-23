@@ -30,7 +30,8 @@
 </head>
 <style>
   body {
-    background-image: url("<?= base_url('assets/'); ?>dist/img/photo2.png");
+    background-color: ghostwhite;
+    /* background-image: url("<?= base_url('assets/'); ?>dist/img/photo2.png"); */
 
     /* Full height */
     height: 100%;
