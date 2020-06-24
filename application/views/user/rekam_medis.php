@@ -130,7 +130,7 @@
                                                 <td width=5px>Tensi</td>
                                                 <td width=150px>Anamnese/ Diagnosa</td>
                                                 <td width=20px>Terapi</td>
-                                                <td width=5px>Action</td>
+                                                <!-- <td width=5px>Action</td> -->
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -142,10 +142,10 @@
                                                     <td>
                                                         <p style="height:100px; width:250px"><?= $m['terapi'] ?></p>
                                                     </td>
-                                                    <td>
+                                                    <!-- <td>
                                                         <a href="<?= base_url('medis/hapus_medis') ?>?id=<?= $m['id']; ?>&&no_medis=<?= $m['no_medis']; ?>" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
                                                         </a>
-                                                    </td>
+                                                    </td> -->
                                                 </tr>
                                             <?php } ?>
                                         </tbody>
