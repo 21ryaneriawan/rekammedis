@@ -168,18 +168,20 @@
                                             <input type="hidden" name="id" class="form-control" id="id" value="<?= $m['id'] ?>">
                                             <input type="hidden" name="no_medis" class="form-control" id="no_medis" value="<?= $m['no_medis'] ?>">
                                             <div>
+                                            <?php } ?>
+                                            <?php foreach ($medis as $m) { ?>
                                                 <label class="control-label">Tensi</label>
-                                                <input type="text" class="form-control" name="tensi" id="tensi" placeholder="Place some text here" required>
+                                                <input type="text" class="form-control" name="tensi" id="tensi" value="<?= $m['tensi'] ?>" placeholder="Place some text here" required>
                                             </div>
                                             <div>
                                                 <br>
                                                 <label class="control-label">Anamnesi/ Diagnosa</label>
-                                                <textarea class="textarea" name="diagnosa" id="diagnosa" placeholder="Place some text here" style="width: 100%; height: 50px; font-size: 12px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                                <textarea class="textarea" name="diagnosa" id="diagnosa" placeholder="Place some text here" style="width: 100%; height: 50px; font-size: 12px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?= $m['diagnosa'] ?></textarea>
                                             </div>
                                             <div>
                                                 <br>
                                                 <label class="control-label">Terapi</label>
-                                                <textarea class="textarea" name="terapi" id="terapi" placeholder="Place some text here" style="width: 100%; height: 100px; font-size: 12px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                                <textarea class="textarea" name="terapi" id="terapi" placeholder="Place some text here" style="width: 100%; height: 100px; font-size: 12px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?= $m['terapi'] ?></textarea>
                                             </div><br>
                                             <div class="form-group">
                                                 <div>

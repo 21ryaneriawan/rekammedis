@@ -130,7 +130,7 @@
                                     <form action="<?= base_url('pasien/tambah_pasien') ?>" method="post">
                                         <div class="form-group has-feedback">
                                             <label class="control-label">No Rekam Medis</label>
-                                            <input type="text" class="form-control" id="no_rekam_medis" name="no_rekam_medis" placeholder="No rekam medis" value="<?= set_value('no_rekam_medis') ?>" minlength="9" maxlength="9">
+                                            <input type="text" class="form-control" id="no_rekam_medis" name="no_rekam_medis" placeholder="No rekam medis" value="<?= $no_medis ?>" minlength="9" maxlength="9" readonly>
                                             <?= form_error('no_rekam_medis', '<small class="text-danger">', '</small>') ?>
                                         </div>
                                         <div class="form-group has-feedback">

@@ -17,6 +17,26 @@ class Pasien extends CI_Controller
     //CRUD DATA PASIEN
     public function tampil_pasien()
     {
+        $kode_seri = $this->Modpasien->no_rekam_medis();
+        // $seri = $kode_seri['kode'];
+        // mengambil angka dari kode barang terbesar, menggunakan fungsi substr
+        // dan diubah ke integer dengan (int)
+        $urutan = (int) substr($kode_seri, 7, 7);
+
+        // bilangan yang diambil ini ditambah 1 untuk menentukan nomor urut berikutnya
+        $urutan++;
+
+        // membentuk kode barang baru
+        // perintah sprintf("%03s", $urutan); berguna untuk membuat string menjadi 3 karakter
+        // misalnya perintah sprintf("%03s", 15); maka akan menghasilkan '015'
+        // angka yang diambil tadi digabungkan dengan kode huruf yang kita inginkan, misalnya BRG 
+        $tanggal = date('Ym');
+        $kodeseri = $tanggal . sprintf("%03s", $urutan);
+        // echo $kodeseri;
+
+        // var_dump($kodeseri);
+        // die();
+
         $nama['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data = array(
             'title' => 'Data Pasien',
@@ -26,7 +46,8 @@ class Pasien extends CI_Controller
             'avatar' => $nama['user']['image'],
             'label' => base_url('assets/dist/img/avatar3.png'),
             'catatan' => $this->Modadmin->get_catatan(),
-            'items' => $this->Modpasien->get_pasien1()
+            'items' => $this->Modpasien->get_pasien1(),
+            'no_medis' => $kodeseri
         );
 
         $this->load->view('templates/header', $data);

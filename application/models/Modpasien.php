@@ -148,4 +148,11 @@ class Modpasien extends CI_Model
         $data = $this->db->query("SELECT p.*, r.id, r.diagnosa, r.terapi, DATE_FORMAT(r.tanggal, ('%d %M %Y')) as tanggal FROM pasien p, rekam_medis r, (SELECT @no:= 0) AS nomor WHERE p.no_medis=r.no_medis AND r.status='selesai' ORDER BY r.id DESC");
         return $data->result_array();
     }
+
+    function no_rekam_medis()
+    {
+        $q = $this->db->query("SELECT max(no_medis) as kode FROM pasien");
+
+        return $q->row()->kode;
+    }
 }
