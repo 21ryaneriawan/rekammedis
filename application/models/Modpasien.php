@@ -47,7 +47,7 @@ class Modpasien extends CI_Model
 
     function get_rekam_medis($id)
     {
-        $data = $this->db->query("SELECT r.id, r.no_medis, r.tensi, DATE_FORMAT(r.tanggal, ('%d %M %Y')) as tanggal, r.diagnosa, r.terapi, p.nama_pasien FROM rekam_medis r, pasien p WHERE p.no_medis=r.no_medis AND r.no_medis='$id' ORDER BY id DESC");
+        $data = $this->db->query("SELECT r.id, r.no_medis, r.tensi, DATE_FORMAT(r.tanggal, ('%d %M %Y')) as tanggal, r.diagnosa, r.terapi, p.nama_pasien FROM rekam_medis r, pasien p WHERE p.no_medis=r.no_medis AND r.no_medis='$id' ORDER BY r.id DESC");
         return $data->result_array();
     }
 

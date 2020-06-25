@@ -87,15 +87,17 @@
                                     <table class="table table-bordered table-striped" width="100%" id="example1">
                                         <thead>
                                             <tr>
+                                                <td width='1px'>No</td>
                                                 <th width="36%">Nama Obat</th>
                                                 <th width=20%>Total</th>
                                                 <th>Jumlah Obat yang Dibituhkan</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php
+                                            <?php $no = 1;
                                             foreach ($obat as $o) { ?>
                                                 <tr>
+                                                    <td><?= $no ?></td>
                                                     <td><?= $o['nama_obat'] ?></td>
                                                     <td><?= $o['stok'] ?> <?= $o['satuan'] ?></td>
                                                     <td>
@@ -107,7 +109,8 @@
                                                             <button class="btn btn-success"><i class="fa fa-refresh"></i> Update Obat</button>
                                                         </form>
                                                     </td>
-                                                <?php } ?>
+                                                <?php $no++;
+                                            } ?>
                                                 </tr>
                                         </tbody>
                                     </table>

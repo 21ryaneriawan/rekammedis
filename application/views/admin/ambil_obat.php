@@ -83,7 +83,7 @@
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th width="1%">No</th>
+                                                <td width='1px'>No</td>
                                                 <th width=30px>Tanggal</th>
                                                 <th width=30px>No.Rec.Med</th>
                                                 <th width="20%">Nama pasien</th>
@@ -94,10 +94,10 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php $i = 1;
+                                            <?php $no = 1;
                                             foreach ($items as $o) { ?>
                                                 <tr>
-                                                    <td><?= $i ?></td>
+                                                    <td><?= $no ?></td>
                                                     <td><?= $o['tanggal'] ?></td>
                                                     <td><?= $o['no_medis'] ?></td>
                                                     <td><?= $o['nama_pasien'] ?></td>
@@ -108,7 +108,7 @@
                                                         <a href="<?= base_url('obat/cek_obat') ?>?id=<?= $o['id'] ?>" class='btn btn-primary'>Ambil Obat</a>
                                                     </td>
                                                 </tr>
-                                            <?php $i++;
+                                            <?php $no++;
                                             } ?>
                                         </tbody>
                                     </table>

@@ -126,6 +126,7 @@
                                     <table id="example1" class="table table-bordered table-striped" width='100%'>
                                         <thead>
                                             <tr>
+                                                <td width='1px'>No</td>
                                                 <td width=60px>Tanggal</td>
                                                 <td width=5px>Tensi</td>
                                                 <td width=150px>Anamnese/ Diagnosa</td>
@@ -134,8 +135,10 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php foreach ($medis as $m) { ?>
+                                            <?php $no = 1;
+                                            foreach ($medis as $m) { ?>
                                                 <tr>
+                                                    <td><?= $no ?></td>
                                                     <td><?= $m['tanggal'] ?></td>
                                                     <td><?= $m['tensi'] ?></td>
                                                     <td><?= $m['diagnosa'] ?></td>
@@ -147,7 +150,8 @@
                                                         </a>
                                                     </td> -->
                                                 </tr>
-                                            <?php } ?>
+                                            <?php $no++;
+                                            } ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -168,8 +172,7 @@
                                             <input type="hidden" name="id" class="form-control" id="id" value="<?= $m['id'] ?>">
                                             <input type="hidden" name="no_medis" class="form-control" id="no_medis" value="<?= $m['no_medis'] ?>">
                                             <div>
-                                            <?php } ?>
-                                            <?php foreach ($medis as $m) { ?>
+
                                                 <label class="control-label">Tensi</label>
                                                 <input type="text" class="form-control" name="tensi" id="tensi" value="<?= $m['tensi'] ?>" placeholder="Place some text here" required>
                                             </div>
