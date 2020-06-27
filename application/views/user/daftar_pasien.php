@@ -108,11 +108,54 @@
                             </div>
                             <!-- /.box -->
                         </div>
+                        <div class="box">
+                            <div class="box-header">
+                                <h3><b>Daftar Riwayat Periksa</b></h3>
+                            </div>
+                            <div class="box-body">
+                                <table id="example1" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th width="1%">No</th>
+                                            <th width="10%">Tanggal</th>
+                                            <th width="10%">No.Med.Rec</th>
+                                            <th width="20%">Nama Pasien</th>
+                                            <th width="1%">Umur</th>
+                                            <th width="20%">Alamat</th>
+                                            <th width="10%">Status</th>
+                                            <th width="1%">Periksa</th>
+                                            <!-- <td>Obat</td> -->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $no = 1;
+                                        foreach ($riwayat_periksa as $i) { ?>
+                                            <tr>
+                                                <td><?= $no ?></td>
+                                                <td><?= $i['tanggal'] ?></td>
+                                                <td><?= $i['no_medis'] ?></td>
+                                                <td><?= $i['nama_pasien'] ?></td>
+                                                <td><?= $i['umur'] ?></td>
+                                                <td><?= $i['alamat'] ?></td>
+                                                <td><?= $i['status'] ?></td>
+                                                <td><a href="<?= base_url('user/rekam_medis') ?>?id=<?= $i['id'] ?>&&no_medis=<?= $i['no_medis'] ?>"><i class="fa fa-edit btn btn-danger"></i></a></td>
+
+                                            </tr>
+                                        <?php $no++;
+                                        } ?>
+                                    </tbody>
+                                </table>
+                            </div> <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
                     </div>
 
-            </section>
+
+                </div>
         </div>
     </section>
+</div>
+</section>
 </div>
 
 <!-- /.content-wrapper -->
@@ -190,6 +233,22 @@
                 }
             });
         }
+    });
+    $(document).ready(function() {
+        // tampil_data();
+        $('#example1').dataTable({
+            'paging': true,
+            'lengthChange': true,
+            'searching': true,
+            'ordering': true,
+            'info': true,
+            'autoWidth': true,
+            'scrollX': true,
+            'coloumnDefs': [{
+                "width": "90%",
+                "targets": 1
+            }]
+        });
     });
 
     function kartu(id) {

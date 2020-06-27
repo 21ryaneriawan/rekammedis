@@ -155,4 +155,10 @@ class Modpasien extends CI_Model
 
         return $q->row()->kode;
     }
+
+    function get_riwayat_periksa()
+    {
+        $data = $this->db->query("SELECT p.*, r.id, r.status, DATE_FORMAT(r.tanggal, ('%d %M %Y')) as tanggal FROM pasien p, rekam_medis r, (SELECT @no:= 0) AS nomor WHERE p.no_medis=r.no_medis AND r.status='ambil obat' ORDER BY r.id DESC");
+        return $data->result_array();
+    }
 }

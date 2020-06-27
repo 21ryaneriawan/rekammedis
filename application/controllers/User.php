@@ -89,6 +89,7 @@ class User extends CI_Controller
 
     public function pasien()
     {
+        // $tanggal = date('Y-m-d');
         $nama['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data = array(
             'name' =>  $nama['user']['name'],
@@ -99,16 +100,17 @@ class User extends CI_Controller
             'label' => base_url('assets/dist/img/avatar3.png'),
             'items' => $this->Modpasien->get_data_berobat(),
             'pasien' => $this->Modpasien->get_pasien1(),
-            'catatan' => $this->Moddokter->get_catatan()
+            'catatan' => $this->Moddokter->get_catatan(),
+            'riwayat_periksa' => $this->Modpasien->get_riwayat_periksa()
         );
 
-        // var_dump($data['catatan']);
+        // var_dump($tanggal);
         // die();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_user', $data);
-        $this->load->view('user/daftar_pasien', $data);
         $this->load->view('templates/footer');
+        $this->load->view('user/daftar_pasien', $data);
     }
 
     public function rekam_medis()

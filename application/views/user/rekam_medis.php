@@ -262,10 +262,22 @@
                     <?php } ?>
                     <input type="hidden" name="dokter" class="form-control" id="dokter" value="<?= $name ?>">
                     <label for="">Nama Rumah Sakit</label>
-                    <input type="text" name="nama_rumah_sakit" id="nama_rumah_sakit" class="form-control" required>
+                    <!-- <input type="text" name="nama_rumah_sakit" id="nama_rumah_sakit" class="form-control" required> -->
+                    <select name="nama_rumah_sakit" id="" class="form-control" required>
+                        <option value="">-- Pilih Rumah Sakit --</option>
+                        <option value="RSUD Ciawi">RSUD Ciawi</option>
+                        <option value="RS PMI Bogor">RS PMI Bogor</option>
+                        <option value="Rumah Sakit Salak">Rumah Sakit Salak</option>
+                        <option value="RS Bhayangkara Bogor">RS Bhayangkara Bogor</option>
+                        <option value="Rumah Sakit Bogor Medical center">Rumah Sakit Bogor Medical center</option>
+                        <option value="Rumah Sakit Bogor Medika Dramaga">Rumah Sakit Bogor Medika Dramaga</option>
+                    </select>
 
                     <label for="">Nama Poli</label>
-                    <input type="text" name="nama_poli" id="nama_poli" class="form-control" required>
+                    <select name="nama_poli" id="" class="form-control" required>
+                        <option value="">-- Pilih Poli --</option>
+                        <option value="Umum">Umum</option>
+                    </select>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary">Buat Rujukan</button>

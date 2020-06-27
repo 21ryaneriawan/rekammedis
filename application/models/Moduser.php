@@ -19,7 +19,7 @@ class Moduser extends CI_Model
     {
         $data = $this->db->query("SELECT r.*, m.diagnosa, p.nama_pasien, p.no_medis, p.umur, DATE_FORMAT(r.tanggal, '%d %M %Y') as tanggal 
             FROM data_rujukan r, rekam_medis m, pasien p
-            WHERE p.no_medis=m.no_medis AND m.id=r.id_rekam_medis
+            WHERE p.no_medis=m.no_medis AND m.id=r.id_rekam_medis ORDER BY r.id DESC
         ");
         return $data->result_array();
     }
