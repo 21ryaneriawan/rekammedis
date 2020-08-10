@@ -98,6 +98,7 @@
                              </span></a>
                      </li>
                      <li <?= $this->uri->segment(2) == 'riwayat_berobat' ? 'class="active"' : '' ?>><a href="<?php echo base_url('pasien/riwayat_berobat'); ?>"><i class="fa fa-circle-o"></i>Riwayat</a></li>
+                     <li <?= $this->uri->segment(2) == 'report_dokter' ? 'class="active"' : '' ?>><a href="<?php echo base_url('dokter/report_dokter'); ?>"><i class="fa fa-circle-o"></i>Report Dokter</a></li>
                  </ul>
              </li>
              <!-- <li>

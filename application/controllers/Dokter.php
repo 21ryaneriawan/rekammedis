@@ -129,6 +129,66 @@ class Dokter extends CI_Controller
         $this->load->view('templates/footer');
         $this->load->view('dokter/tambah_dokter', $data);
     }
+
+    //Report dokter
+    public function report_dokter()
+    {
+        if ($this->input->post('submit')) {
+            // $template = $this->input->post('bulan');
+            $tgl_awal = $this->input->post('awal');
+            $tgl_akhir = $this->input->post('akhir');
+            $dokter = $this->input->post('dokter');
+        } else {
+            // $template = null;
+            $tgl_akhir = null;
+            $tgl_awal = null;
+            $dokter = null;
+        }
+
+        $nama['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data = array(
+            'title' => 'Report Dokter',
+            'name' =>  $nama['user']['name'],
+            'email' =>  $nama['user']['email'],
+            'date' => $nama['user']['date_created'],
+            'avatar' => $nama['user']['image'],
+            'label' => base_url('assets/dist/img/avatar3.png'),
+            'dokter' => $this->Moddokter->get_dokter(),
+            'items' => $this->Moddokter->get_report_dokter($tgl_awal, $tgl_akhir, $dokter),
+            'tgl_awal' => $tgl_awal,
+            'tgl_akhir' => $tgl_akhir,
+            'nama_dokter' => $dokter,
+            'catatan' => $this->Moddokter->get_catatan()
+        );
+
+        // var_dump($data['nama_dokter']);
+        // die();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/footer', $data);
+        $this->load->view('dokter/report_dokter', $data);
+    }
+
+    public function cetak_report_dokter()
+    {
+        $this->load->library('pdfgenerator');
+        $dokter = $this->input->get('dokter');
+        $tgl_awal = $this->input->get('tgl_awal');
+        $tgl_akhir = $this->input->get('tgl_akhir');
+
+        $data = array(
+            'title' => "Report Dokter",
+            'items' => $this->Moddokter->get_report_dokter($tgl_awal, $tgl_akhir, $dokter),
+        );
+
+        // var_dump($data['medis']);
+        // die();
+
+        $html = $this->parser->parse("dokter/cetak_report_dokter", $data);
+        $this->pdfgenerator->generate($html, "Data report dokter", true, 'A4', 'portrait');
+    }
+
     // public function insert_dokter()
     // {
     //     $data = array(

@@ -47,4 +47,14 @@ class Moddokter extends CI_Model
         $q = $this->db->where('id', $id)->delete('data_dokter');
         return $q;
     }
+
+    function get_report_dokter($tgl_awal, $tgl_akhir, $dokter)
+    {
+        $data = $this->db->query("
+        SELECT p.nama_pasien, r.diagnosa, r.terapi, DATE_FORMAT(r.tanggal, ('%d %M %Y')) as tanggal 
+        FROM pasien p, rekam_medis r
+        WHERE p.no_medis=r.no_medis AND r.tanggal BETWEEN '$tgl_awal' AND '$tgl_akhir' AND r.dokter='$dokter' AND r.status='selesai'
+        ORDER BY r.id");
+        return $data->result_array();
+    }
 }
